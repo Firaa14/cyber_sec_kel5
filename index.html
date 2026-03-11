@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator & Encryptor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hash Generator & Encryptor</h1>
+            <p class="subtitle">Generate berbagai jenis hash dengan mudah dan aman</p>
+        </header>
+
+        <section class="info-section">
+            <div class="info-card">
+                <h2>Apa itu Hash?</h2>
+                <p>
+                    <strong>Hash</strong> adalah hasil dari algoritma matematika (fungsi hash) yang mengubah data berukuran sembarang menjadi deretan karakter dengan panjang tetap (string).
+                    Hash berfungsi sebagai "sidik jari" unik untuk data, memastikan integritas data (tidak diubah), dan sering digunakan untuk mengamankan kata sandi atau dalam blockchain. 
+                    Hash bersifat <strong>satu arah</strong> (one-way function), 
+                    yang artinya tidak bisa dikembalikan ke bentuk aslinya.
+                </p>
+                <div class="features">
+                    <h3>Karakteristik MD5:</h3>
+                    <ul>
+                        <li>One- way function: tidak bisa dikembalikan ke bentuk asli</li>
+                        <li>Deterministik: Input yang sama selalu menghasilkan hash yang sama</li>
+                        <li>Avalanche Effect: Perubahan kecil pada input menghasilkan hash yang sangat berbeda</li>
+                        <li>Fixed Length: Hasil hash selalu memiliki panjang tetap</li>
+                        <li>Collision: dua input berbeda bisa menghasilkan hash yang sama</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>Tentang MD5</h2>
+                <p>
+                    <strong>MD5 (Message Digest Algorithm 5)</strong> adalah algoritma hash yang menghasilkan 
+                    nilai hash 128-bit (32 karakter heksadesimal). MD5 dulunya populer untuk verifikasi integritas 
+                    data, namun sekarang <strong>tidak direkomendasikan untuk keamanan</strong> karena rentan terhadap 
+                    collision attacks.
+                </p>
+                <div class="usage">
+                    <h3>Penggunaan MD5:</h3>
+                    <ul>
+                        <li>Checksum untuk verifikasi integritas file</li>
+                        <li>Identifikasi unik non-kritis</li>
+                        <li>Deduplication data</li>
+                        <li><em>Catatan: Untuk keamanan, gunakan SHA-256 atau SHA-512</em></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="tool-section">
+            <div class="card">
+                <h2>Hash Generator</h2>
+                <p class="description">Masukkan text untuk menghasilkan berbagai jenis hash</p>
+                
+                <div class="input-group">
+                    <label for="inputText">Text Input:</label>
+                    <textarea id="inputText" placeholder="Masukkan text yang ingin di-hash..." rows="4"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-md5" onclick="generateHash('md5')">Generate MD5</button>
+                    <button class="btn btn-sha1" onclick="generateHash('sha1')">Generate SHA-1</button>
+                    <button class="btn btn-sha256" onclick="generateHash('sha256')">Generate SHA-256</button>
+                    <button class="btn btn-sha512" onclick="generateHash('sha512')">Generate SHA-512</button>
+                </div>
+
+                <div class="result-group">
+                    <label>Hash Result:</label>
+                    <div class="result-box" id="hashResult">
+                        <span class="placeholder">Hash akan muncul di sini...</span>
+                    </div>
+                    <button class="btn-copy" onclick="copyToClipboard('hashResult')" id="copyBtn" style="display: none;">
+                        Copy to Clipboard
+                    </button>
+                </div>
+
+                <div class="info-box" id="hashInfo" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Section: Hash Types Info -->
+        <section class="info-section">
+            <div class="card algorithms">
+                <h2>Algoritma Hash yang Tersedia</h2>
+                
+                <div class="algo-grid">
+                    <div class="algo-card md5-card">
+                        <h3>MD5</h3>
+                        <p class="algo-size">128-bit (32 hex)</p>
+                        <p class="algo-desc">Cepat namun tidak aman untuk kriptografi. Cocok untuk checksum non-kritis.</p>
+                        <span class="security-badge warning">Tidak Aman</span>
+                    </div>
+
+                    <div class="algo-card sha1-card">
+                        <h3>SHA-1</h3>
+                        <p class="algo-size">160-bit (40 hex)</p>
+                        <p class="algo-desc">Lebih baik dari MD5, namun sudah deprecated untuk keamanan tinggi.</p>
+                        <span class="security-badge warning">Deprecated</span>
+                    </div>
+
+                    <div class="algo-card sha256-card">
+                        <h3>SHA-256</h3>
+                        <p class="algo-size">256-bit (64 hex)</p>
+                        <p class="algo-desc">Standar modern yang aman. Direkomendasikan untuk keamanan.</p>
+                        <span class="security-badge safe">Aman</span>
+                    </div>
+
+                    <div class="algo-card sha512-card">
+                        <h3>SHA-512</h3>
+                        <p class="algo-size">512-bit (128 hex)</p>
+                        <p class="algo-desc">Keamanan tertinggi. Ideal untuk data sangat sensitif.</p>
+                        <span class="security-badge safe">Sangat Aman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Hash Generator & Encryptor by Kelompok 5 T4E TI Universitas Brawijaya</p>
+        </footer>
+    </div>
+
+    <script src="md5.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
